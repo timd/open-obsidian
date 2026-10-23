@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Open in Obsidian</title>
+<style>body{font:16px system-ui,sans-serif;margin:2rem;color:#222;background:#fff}a{font-size:1.2rem}@media(prefers-color-scheme:dark){body{color:#eee;background:#111}a{color:#9cf}}</style>
+</head>
+<body>
+<p id="msg">Opening Obsidian…</p>
+<p><a id="link" href="#">Open the note in Obsidian</a></p>
+<script>
+// Usage: ?vault=Tim&file=paddy/learning/kubernetes/Note name
+var q = new URLSearchParams(location.search);
+var vault = q.get("vault") || "Tim";
+var file = q.get("file");
+if (file) {
+  var uri = "obsidian://open?vault=" + encodeURIComponent(vault) + "&file=" + encodeURIComponent(file);
+  document.getElementById("link").href = uri;
+  location.href = uri;
+} else {
+  document.getElementById("msg").textContent = "No note given.";
+  document.getElementById("link").remove();
+}
+</script>
+</body>
+</html>
